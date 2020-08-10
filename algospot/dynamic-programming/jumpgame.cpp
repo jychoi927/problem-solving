@@ -12,31 +12,34 @@ int d[MAX][MAX];
 int n;
 
 int dp(int x, int y){
-	if (x > n || y > n) return 0;
-	if (x == n && y == n) return 1;
-	if (d[y][x] != -1) return d[y][x];
-	return d[y][x] = (dp(x + arr[y][x], y) || dp(x, y + arr[y][x]));
+    if (x > n || y > n)
+        return 0;
+    if (x == n && y == n)
+        return 1;
+    if (d[y][x] != -1)
+        return d[y][x];
+    return d[y][x] = (dp(x + arr[y][x], y) || dp(x, y + arr[y][x]));
 }
 
 int main(){
-	fastio;
-	
-	int _;
-	cin >> _;
-	while (_--){
-		memset(d, -1, sizeof(d));
+    fastio;
 
-		cin >> n;
-		for (int i = 1; i <= n; i++)
-			for (int j = 1; j <= n; j++)
-				cin >> arr[i][j];
+    int _;
+    cin >> _;
+    while (_--){
+        memset(d, -1, sizeof(d));
 
-		int result = dp(1, 1);
-		if (result)
-			cout << "YES" << endl;
-		else
-			cout << "NO" << endl;
-	}
+        cin >> n;
+        for (int i=1;i<=n;i++)
+            for (int j=1;j<=n;j++)
+                cin >> arr[i][j];
 
-	return 0;
+        int result = dp(1, 1);
+        if (result)
+            cout << "YES" << endl;
+        else
+            cout << "NO" << endl;
+    }
+
+    return 0;
 }
