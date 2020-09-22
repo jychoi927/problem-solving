@@ -53,5 +53,9 @@ string compressBetter2(string str){
     }
 
     index = setChar(array, last, index, count);
-    return string(array);
+    
+    if(string(array).length() >= str.length())
+        return str;
+    else
+        return string(array);
 }
